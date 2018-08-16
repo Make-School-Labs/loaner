@@ -34,6 +34,13 @@ class ViewController: UIViewController {
                 
                 let selectedItem = items[indexPath.row]
                 detailedItemVc.item = selectedItem
+            case "show new item":
+                guard let itemEditorVc = segue.destination as? ItemEditorViewController else {
+                    return print("storyboard not set up correctly")
+                }
+                
+                let newItem = createNewItem()
+                itemEditorVc.item = newItem
             default: break
             }
         }
