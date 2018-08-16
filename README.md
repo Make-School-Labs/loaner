@@ -68,6 +68,13 @@ ItemDetailedVc
 - present contact info
 - hide and show the navigation bar
 
+CHALLENGES
+
+VIEWCONTROLLERS
+ItemEditor
+- save to albums
+- info.plist
+
 # Project Spec
 
 # In Class Project 2 - Loaner Ledger App
