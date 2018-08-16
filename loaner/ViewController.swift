@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     // MARK: - VARS
     
-    var items: [Loan] = []
+    var items: [Item] = []
 
     // MARK: - RETURN VALUES
     
@@ -32,9 +32,9 @@ class ViewController: UIViewController {
         let sponge = Loanee(name: "Spongebob", profileImage: #imageLiteral(resourceName: "sponge"), contactNumber: "7077654341")
         let krabs = Loanee(name: "Mr. Krabs", profileImage: #imageLiteral(resourceName: "mr krabs"), contactNumber: "7071357911")
         
-        let bottleLoan = Loan(itemTitle: "Water Bottle", notes: "", itemImage: #imageLiteral(resourceName: "dog"), loanee: pat)
-        let phoneLoan = Loan(itemTitle: "iPhone X", notes: "", itemImage: #imageLiteral(resourceName: "hammer"), loanee: sponge)
-        let gameLoan = Loan(itemTitle: "Xbox Z", notes: "", itemImage: #imageLiteral(resourceName: "star"), loanee: krabs)
+        let bottleLoan = Item(itemTitle: "Water Bottle", notes: "", itemImage: #imageLiteral(resourceName: "dog"), loanee: pat)
+        let phoneLoan = Item(itemTitle: "iPhone X", notes: "", itemImage: #imageLiteral(resourceName: "hammer"), loanee: sponge)
+        let gameLoan = Item(itemTitle: "Xbox Z", notes: "", itemImage: #imageLiteral(resourceName: "star"), loanee: krabs)
         
         items = [bottleLoan, phoneLoan, gameLoan]
         

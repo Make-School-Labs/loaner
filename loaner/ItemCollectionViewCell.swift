@@ -13,7 +13,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
-    func configure(_ item: Loan) {
+    func configure(_ item: Item) {
         labelTitle.text = item.itemTitle
         imageView.image = item.itemImage
     }

@@ -1,5 +1,5 @@
 //
-//  Loan.swift
+//  Item.swift
 //  loaner
 //
 //  Created by Erick Sanchez on 8/15/18.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit.UIImage
 
-struct Loan {
+struct Item {
     var itemTitle: String
     var notes: String = ""
     var itemImage: UIImage = UIImage(named: "no item image")!

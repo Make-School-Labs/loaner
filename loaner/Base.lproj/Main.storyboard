@@ -95,10 +95,10 @@
             </objects>
             <point key="canvasLocation" x="960.79999999999995" y="42.728635682158924"/>
         </scene>
-        <!--View Controller-->
+        <!--Item Detailed View Controller-->
         <scene sceneID="WkM-Go-LCC">
             <objects>
-                <viewController id="AUf-3O-3es" sceneMemberID="viewController">
+                <viewController id="AUf-3O-3es" customClass="ItemDetailedViewController" customModule="loaner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yrp-tW-5oV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,7 +124,9 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="dUk-YJ-A17" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="riv-N1-jy4" secondAttribute="trailing" constant="16" id="aeD-5p-Ldj"/>
                                     <constraint firstAttribute="height" constant="44" id="bep-3x-v8o"/>
+                                    <constraint firstItem="riv-N1-jy4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fl4-kK-HgA" secondAttribute="trailing" constant="16" id="cv8-4t-gor"/>
                                 </constraints>
                             </stackView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g5g-sm-i9h">
@@ -142,13 +144,16 @@
                                                             <constraint firstAttribute="width" secondItem="Huj-a9-6YJ" secondAttribute="height" multiplier="1:1" id="dic-Rx-dJm"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yG-bw-7cX">
-                                                        <rect key="frame" x="131" y="168" width="42" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yG-bw-7cX">
+                                                        <rect key="frame" x="0.0" y="168" width="304" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="3yG-bw-7cX" firstAttribute="width" secondItem="yfF-yF-XMa" secondAttribute="width" id="Ngd-cu-zuH"/>
+                                                </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Loaned to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urm-w5-DIN">
                                                 <rect key="frame" x="0.0" y="212.5" width="304" height="24"/>
@@ -165,8 +170,8 @@
                                                             <constraint firstAttribute="width" secondItem="doA-0A-kJh" secondAttribute="height" multiplier="1:1" id="JWA-oy-Wcx"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIY-A6-k1b">
-                                                        <rect key="frame" x="131" y="168" width="42" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIY-A6-k1b">
+                                                        <rect key="frame" x="0.0" y="168" width="304" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -185,10 +190,16 @@
                                                                 <state key="normal" title="Contact">
                                                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="pressContactLoanee:" destination="AUf-3O-3es" eventType="touchUpInside" id="VxI-xH-stb"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="IIY-A6-k1b" firstAttribute="width" secondItem="K0x-7j-Xx2" secondAttribute="width" id="jpV-Xc-ZTB"/>
+                                                </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Item Notes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sfq-Qm-u6C">
                                                 <rect key="frame" x="0.0" y="575.5" width="304" height="24"/>
@@ -227,6 +238,9 @@
                                     <constraint firstAttribute="height" constant="48" id="Fjb-VQ-FFz"/>
                                 </constraints>
                                 <state key="normal" title="Mark as Returned"/>
+                                <connections>
+                                    <action selector="pressMarkAsReturned:" destination="AUf-3O-3es" eventType="touchUpInside" id="q84-jw-EHF"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -246,6 +260,14 @@
                         <viewLayoutGuide key="safeArea" id="pW3-6s-DvQ"/>
                     </view>
                     <size key="freeformSize" width="320" height="1000"/>
+                    <connections>
+                        <outlet property="imageViewContact" destination="doA-0A-kJh" id="5cg-UL-KV0"/>
+                        <outlet property="imageViewItem" destination="Huj-a9-6YJ" id="dU9-Jn-uX6"/>
+                        <outlet property="labelItemTitle" destination="3yG-bw-7cX" id="MAH-oe-6h1"/>
+                        <outlet property="labelLoaneeName" destination="IIY-A6-k1b" id="L5S-eA-B8F"/>
+                        <outlet property="labelNotes" destination="FY1-CX-plS" id="fHX-x7-MsQ"/>
+                        <outlet property="labelTitle" destination="riv-N1-jy4" id="Xaa-IR-W7Q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sIj-ab-KLC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
