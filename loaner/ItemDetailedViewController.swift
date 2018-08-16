@@ -39,7 +39,21 @@ class ItemDetailedViewController: UIViewController {
     
     @IBOutlet weak var labelTitle: UILabel!
     @IBAction func pressTrash(_ sender: UIButton) {
-        //TODO: prompt user "are you sure?" then segue 'unwind from trash'
+        let alertTrash = UIAlertController(
+            title: nil,
+            message: "Are you sure you want to delete this item?",
+            preferredStyle: .actionSheet
+        )
+        
+        let actionDelete = UIAlertAction(title: "Delete \(item.itemTitle)", style: .destructive) { (_) in
+            self.performSegue(withIdentifier: "unwind from trash", sender: nil)
+        }
+        alertTrash.addAction(actionDelete)
+        
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel)
+        alertTrash.addAction(actionCancel)
+        
+        present(alertTrash, animated: true)
     }
     
     @IBOutlet weak var imageViewItem: UIImageView!
@@ -52,7 +66,21 @@ class ItemDetailedViewController: UIViewController {
     
     @IBOutlet weak var labelNotes: UILabel!
     @IBAction func pressMarkAsReturned(_ sender: UIButton) {
-        //TODO: unwind from mark as returned
+        let alertMarkAsReturned = UIAlertController(
+            title: "Mark Item as Returned",
+            message: "Are you sure you want to mark this item, \(item.itemTitle), as returned from \(item.loanee!.name)?",
+            preferredStyle: .actionSheet
+        )
+        
+        let actionConfirm = UIAlertAction(title: "Mark as Returned", style: .default) { (_) in
+            self.performSegue(withIdentifier: "unwind from mark as returned", sender: nil)
+        }
+        alertMarkAsReturned.addAction(actionConfirm)
+        
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel)
+        alertMarkAsReturned.addAction(actionCancel)
+        
+        present(alertMarkAsReturned, animated: true)
     }
     
     // MARK: - LIFE CYCLE

@@ -39,6 +39,25 @@ class ViewController: UIViewController {
         }
     }
     
+    func createNewItem() -> Item {
+        return Item(itemTitle: "Untitled Item")
+    }
+    
+    func add(item: Item) {
+        items.insert(item, at: 0)
+        collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
+    }
+    
+    func markItemAsReturned(at index: Int) {
+        //TODO: archive returned items instead of deleting them
+        deleteItem(at: index)
+    }
+    
+    func deleteItem(at index: Int) {
+        items.remove(at: index)
+        collectionView.deleteItems(at: [IndexPath(row: index, section: 0)])
+    }
+    
     // MARK: - IBACTIONS
     
     @IBAction func unwindToHome(_ segue: UIStoryboardSegue) {
@@ -50,11 +69,21 @@ class ViewController: UIViewController {
         case "unwind from back":
             break
         case "unwind from trash":
-            //TODO: delete selected item
-            break
+            guard
+                let selectedIndexPaths = collectionView.indexPathsForSelectedItems,
+                let selectedItemIndexPath = selectedIndexPaths.first else {
+                    return
+            }
+            
+            deleteItem(at: selectedItemIndexPath.row)
         case "unwind from mark as returned":
-            //TODO: mark selected item as returned
-            break
+            guard
+                let selectedIndexPaths = collectionView.indexPathsForSelectedItems,
+                let selectedItemIndexPath = selectedIndexPaths.first else {
+                    return
+            }
+            
+            markItemAsReturned(at: selectedItemIndexPath.row)
         default:
             break
         }

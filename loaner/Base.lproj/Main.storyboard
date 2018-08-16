@@ -144,7 +144,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yfF-yF-XMa">
                                                 <rect key="frame" x="0.0" y="0.0" width="304" height="188.5"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" image="no item image" translatesAutoresizingMaskIntoConstraints="NO" id="Huj-a9-6YJ">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" image="no item image" translatesAutoresizingMaskIntoConstraints="NO" id="Huj-a9-6YJ">
                                                         <rect key="frame" x="72" y="0.0" width="160" height="160"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Huj-a9-6YJ" secondAttribute="height" multiplier="1:1" id="dic-Rx-dJm"/>
@@ -170,7 +170,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="K0x-7j-Xx2">
                                                 <rect key="frame" x="0.0" y="260.5" width="304" height="291"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" image="no profile image" translatesAutoresizingMaskIntoConstraints="NO" id="doA-0A-kJh">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" image="no profile image" translatesAutoresizingMaskIntoConstraints="NO" id="doA-0A-kJh">
                                                         <rect key="frame" x="72" y="0.0" width="160" height="160"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="doA-0A-kJh" secondAttribute="height" multiplier="1:1" id="JWA-oy-Wcx"/>
@@ -246,7 +246,6 @@
                                 <state key="normal" title="Mark as Returned"/>
                                 <connections>
                                     <action selector="pressMarkAsReturned:" destination="AUf-3O-3es" eventType="touchUpInside" id="q84-jw-EHF"/>
-                                    <segue destination="DYi-mm-gzt" kind="unwind" identifier="unwind from mark as returned" unwindAction="unwindToHome:" id="wVV-To-QmX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -275,6 +274,7 @@
                         <outlet property="labelNotes" destination="FY1-CX-plS" id="fHX-x7-MsQ"/>
                         <outlet property="labelTitle" destination="riv-N1-jy4" id="Xaa-IR-W7Q"/>
                         <segue destination="DYi-mm-gzt" kind="unwind" identifier="unwind from trash" unwindAction="unwindToHome:" id="Zo6-Xa-3l0"/>
+                        <segue destination="DYi-mm-gzt" kind="unwind" identifier="unwind from mark as returned" unwindAction="unwindToHome:" id="WIa-vk-H7g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sIj-ab-KLC" userLabel="First Responder" sceneMemberID="firstResponder"/>
