@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ContactsUI
 
 class ItemDetailedViewController: UIViewController {
 
@@ -61,7 +62,16 @@ class ItemDetailedViewController: UIViewController {
     @IBOutlet weak var imageViewLoanee: UIImageView!
     @IBOutlet weak var labelLoaneeName: UILabel!
     @IBAction func pressContactLoanee(_ sender: UIButton) {
-        //TODO: prompt the contact info
+        guard let contactFromLoanee = item.loanee?.contactInfo else {
+            return print("item needs to have a loanee assigned before saving")
+        }
+        
+        let contactInfoVc = CNContactViewController(for: contactFromLoanee)
+        contactInfoVc.allowsActions = true
+        contactInfoVc.allowsEditing = true
+        
+        navigationController?.pushViewController(contactInfoVc, animated: true)
+        contactInfoVc.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     @IBOutlet weak var labelNotes: UILabel!
@@ -85,10 +95,11 @@ class ItemDetailedViewController: UIViewController {
     
     // MARK: - LIFE CYCLE
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         updateUI()
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
 }
