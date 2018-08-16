@@ -109,3 +109,30 @@ Add a return date with a notification.
 
 - Uses the camera 
 - Saves pictures 
+
+# Outline of Lesson
+---
+
+# MOB 1.2 Sec 10-12
+# Some Sample Clone App (2) - Part 1 - Modeling and Structure
+## Modeling and Structure
+#### Model Data Types
+1. Item struct
+2. Loanee struct
+3. CNContact class
+# Some Sample Clone App (2) - Part 2 - Layout Essentials
+## More on Constraints
+#### Layout Detail View Controllers
+> Topics covered: Constraints, Content Hugging Priority, Content Compression Resistance Priority, Equality constraints, UIStackViews
+1. Layout ItemDetailedVc
+2. Layout ItemEditorVc
+3. Layout ItemContactInfoVc
+
+# Some Sample Clone App (2) - Part 3 - Collections
+## CollectionView
+#### UICollectionView - datasource and delegate
+1. Layout in Storyboard
+2. Populate with dummy data
+3. Select items
+#### UICollectionView layouts
+1. Custom Layout
