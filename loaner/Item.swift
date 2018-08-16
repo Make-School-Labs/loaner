@@ -15,6 +15,7 @@ struct Item {
     var notes: String = ""
     var itemImage: UIImage = UIImage(named: "no item image")!
     var loanee: Loanee? = nil
+    var returnDate: Date? = nil
     
     init(itemTitle: String) {
         self.itemTitle = itemTitle

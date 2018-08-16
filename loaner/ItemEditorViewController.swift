@@ -122,7 +122,7 @@ class ItemEditorViewController: UIViewController {
     @IBAction func pressItemImage(_ sender: Any) {
         let photoSourceAlert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let photoLibraryAction = UIAlertAction(title: "Camera Roll", style: .default) { (_) in
+        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { (_) in
             let imagePickerVc = UIImagePickerController()
             imagePickerVc.delegate = self
             imagePickerVc.allowsEditing = false

@@ -29,6 +29,13 @@ class ItemDetailedViewController: UIViewController {
             imageViewLoanee.image = loanee.profileImage
         }
         
+        if let returnDate = item.returnDate {
+            stackViewReturnDate.isHidden = false
+            labelReturnDate.text = returnDate.stringValue
+        } else {
+            stackViewReturnDate.isHidden = true
+        }
+        
         if item.notes.isEmpty {
             labelNotes.text = "no notes"
         } else {
@@ -74,6 +81,8 @@ class ItemDetailedViewController: UIViewController {
         contactInfoVc.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    @IBOutlet weak var stackViewReturnDate: UIStackView!
+    @IBOutlet weak var labelReturnDate: UILabel!
     @IBOutlet weak var labelNotes: UILabel!
     @IBAction func pressMarkAsReturned(_ sender: UIButton) {
         let alertMarkAsReturned = UIAlertController(

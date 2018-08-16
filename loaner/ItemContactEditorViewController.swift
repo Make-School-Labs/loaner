@@ -10,10 +10,31 @@ import UIKit
 import ContactsUI
 
 class ItemContactEditorViewController: UIViewController {
-
+    
     // MARK: - VARS
     
     var item: Item!
+    
+    var itemNotifications = ItemNotificationStack()
+    
+    var isShowingReturnDate: Bool {
+        set {
+            switchReturnDate.isOn = newValue
+            
+            if newValue {
+                let now = Date()
+                item.returnDate = now
+                datePickerReturnDate.setDate(now, animated: false)
+                datePickerReturnDate.alpha = 1
+            } else {
+                item.returnDate = nil
+                datePickerReturnDate.alpha = 0
+            }
+        }
+        get {
+            return switchReturnDate.isOn
+        }
+    }
     
     // MARK: - RETURN VALUES
     
@@ -30,6 +51,8 @@ class ItemContactEditorViewController: UIViewController {
         }
         
         updateContactInfo()
+        
+        isShowingReturnDate = item.returnDate != nil
     }
     
     func updateContactInfo() {
@@ -72,9 +95,8 @@ class ItemContactEditorViewController: UIViewController {
     
     @IBOutlet weak var buttonSave: UIButton!
     @IBAction func pressSave(_ sender: UIButton) {
-        if item.loanee != nil {
-            performSegue(withIdentifier: "unwind from saving new item", sender: nil)
-        } else {
+        
+        guard item.loanee != nil else {
             let alertMissingContact = UIAlertController(
                 title: "Saving New Item",
                 message: "please select a contact that has a phone number",
@@ -85,7 +107,52 @@ class ItemContactEditorViewController: UIViewController {
             alertMissingContact.addAction(dismissAction)
             
             present(alertMissingContact, animated: true)
+            
+            return
         }
+        
+        if let returnDate = item.returnDate, returnDate <= Date() {
+            
+            let alertMissingContact = UIAlertController(
+                title: "Saving New Item",
+                message: "Return date is in the past. Please select a new return date or remove the old date.",
+                preferredStyle: .alert
+            )
+            
+            let dismissAction = UIAlertAction(title: "Dismiss", style: .default)
+            alertMissingContact.addAction(dismissAction)
+            
+            present(alertMissingContact, animated: true)
+            
+            return
+        }
+        
+        if item.returnDate != nil {
+            itemNotifications.createNotification(for: item)
+        }
+        
+        performSegue(withIdentifier: "unwind from saving new item", sender: nil)
+    }
+    
+    @IBOutlet weak var switchReturnDate: UISwitch!
+    @IBAction func switchChangedValue(_ sender: UISwitch) {
+        if switchReturnDate.isOn {
+            PrivacyUtility.PushNotifications.authorize(
+                successfulHandler: {
+                    
+                }, failureHandler: {
+                    self.isShowingReturnDate = false
+                    PrivacyUtility.PushNotifications.promptAlert(in: self, with: .alert)
+                }
+            )
+        }
+        
+        isShowingReturnDate = switchReturnDate.isOn
+    }
+    
+    @IBOutlet weak var datePickerReturnDate: UIDatePicker!
+    @IBAction func datePickerChangedValue(_ sender: UIDatePicker) {
+        item.returnDate = datePickerReturnDate.date
     }
     
     // MARK: - LIFE CYCLE
@@ -95,7 +162,7 @@ class ItemContactEditorViewController: UIViewController {
         
         updateUI()
     }
-
+    
 }
 
 extension ItemContactEditorViewController: CNContactPickerDelegate {
@@ -104,3 +171,5 @@ extension ItemContactEditorViewController: CNContactPickerDelegate {
         updateContactInfo()
     }
 }
+
+
