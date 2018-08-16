@@ -70,7 +70,11 @@ class ItemEditorViewController: UIViewController {
             
             updateUI()
         case "unwind from contact info":
-            break
+            guard let itemContactVc = segue.source as? ItemContactEditorViewController else {
+                return print("storyboard not set up correctly")
+            }
+            
+            item = itemContactVc.item
         default:
             break
         }
