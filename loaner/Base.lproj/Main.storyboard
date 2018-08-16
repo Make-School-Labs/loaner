@@ -67,7 +67,7 @@
                                         <connections>
                                             <outlet property="imageView" destination="3PH-BK-9jy" id="cHZ-vY-AeA"/>
                                             <outlet property="labelTitle" destination="VLO-jq-p2Q" id="Nin-6S-6lL"/>
-                                            <segue destination="AUf-3O-3es" kind="show" identifier="show item details" id="tgW-dW-zBH"/>
+                                            <segue destination="AUf-3O-3es" kind="show" identifier="show detailed item" id="tgW-dW-zBH"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -109,6 +109,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fl4-kK-HgA">
                                         <rect key="frame" x="0.0" y="0.0" width="38.5" height="30"/>
                                         <state key="normal" title="Back"/>
+                                        <connections>
+                                            <segue destination="DYi-mm-gzt" kind="unwind" identifier="unwind from back" unwindAction="unwindToHome:" id="k1I-gb-yNJ"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riv-N1-jy4">
                                         <rect key="frame" x="120" y="0.0" width="48.5" height="31.5"/>
@@ -121,6 +124,9 @@
                                         <state key="normal" title="Trash">
                                             <color key="titleColor" red="0.96078431369999995" green="0.33333333329999998" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
+                                        <connections>
+                                            <action selector="pressTrash:" destination="AUf-3O-3es" eventType="touchUpInside" id="DST-mS-gd8"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -138,7 +144,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yfF-yF-XMa">
                                                 <rect key="frame" x="0.0" y="0.0" width="304" height="188.5"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" image="no item image" translatesAutoresizingMaskIntoConstraints="NO" id="Huj-a9-6YJ">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" image="no item image" translatesAutoresizingMaskIntoConstraints="NO" id="Huj-a9-6YJ">
                                                         <rect key="frame" x="72" y="0.0" width="160" height="160"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Huj-a9-6YJ" secondAttribute="height" multiplier="1:1" id="dic-Rx-dJm"/>
@@ -164,7 +170,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="K0x-7j-Xx2">
                                                 <rect key="frame" x="0.0" y="260.5" width="304" height="291"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" image="no profile image" translatesAutoresizingMaskIntoConstraints="NO" id="doA-0A-kJh">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" image="no profile image" translatesAutoresizingMaskIntoConstraints="NO" id="doA-0A-kJh">
                                                         <rect key="frame" x="72" y="0.0" width="160" height="160"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="doA-0A-kJh" secondAttribute="height" multiplier="1:1" id="JWA-oy-Wcx"/>
@@ -240,6 +246,7 @@
                                 <state key="normal" title="Mark as Returned"/>
                                 <connections>
                                     <action selector="pressMarkAsReturned:" destination="AUf-3O-3es" eventType="touchUpInside" id="q84-jw-EHF"/>
+                                    <segue destination="DYi-mm-gzt" kind="unwind" identifier="unwind from mark as returned" unwindAction="unwindToHome:" id="wVV-To-QmX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -261,15 +268,17 @@
                     </view>
                     <size key="freeformSize" width="320" height="1000"/>
                     <connections>
-                        <outlet property="imageViewContact" destination="doA-0A-kJh" id="5cg-UL-KV0"/>
                         <outlet property="imageViewItem" destination="Huj-a9-6YJ" id="dU9-Jn-uX6"/>
+                        <outlet property="imageViewLoanee" destination="doA-0A-kJh" id="5cg-UL-KV0"/>
                         <outlet property="labelItemTitle" destination="3yG-bw-7cX" id="MAH-oe-6h1"/>
                         <outlet property="labelLoaneeName" destination="IIY-A6-k1b" id="L5S-eA-B8F"/>
                         <outlet property="labelNotes" destination="FY1-CX-plS" id="fHX-x7-MsQ"/>
                         <outlet property="labelTitle" destination="riv-N1-jy4" id="Xaa-IR-W7Q"/>
+                        <segue destination="DYi-mm-gzt" kind="unwind" identifier="unwind from trash" unwindAction="unwindToHome:" id="Zo6-Xa-3l0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sIj-ab-KLC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="DYi-mm-gzt" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1807.2" y="42.728635682158924"/>
         </scene>

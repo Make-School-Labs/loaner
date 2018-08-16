@@ -18,7 +18,47 @@ class ViewController: UIViewController {
     
     // MARK: - METHODS
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "show detailed item":
+                guard let detailedItemVc = segue.destination as? ItemDetailedViewController else {
+                    return print("storyboard not set up correctly")
+                }
+                
+                guard
+                    let collectionViewCell = sender as? UICollectionViewCell,
+                    let indexPath = collectionView.indexPath(for: collectionViewCell) else {
+                        return print("'show detailed item' was performed by a non-collection view cell")
+                }
+                
+                let selectedItem = items[indexPath.row]
+                detailedItemVc.item = selectedItem
+            default: break
+            }
+        }
+    }
+    
     // MARK: - IBACTIONS
+    
+    @IBAction func unwindToHome(_ segue: UIStoryboardSegue) {
+        guard let identifier = segue.identifier else {
+            return
+        }
+        
+        switch identifier {
+        case "unwind from back":
+            break
+        case "unwind from trash":
+            //TODO: delete selected item
+            break
+        case "unwind from mark as returned":
+            //TODO: mark selected item as returned
+            break
+        default:
+            break
+        }
+    }
     
     @IBOutlet weak var collectionView: UICollectionView!
     
