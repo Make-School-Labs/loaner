@@ -40,16 +40,35 @@ class ItemEditorViewController: UIViewController {
     
     func updateUI() {
         labelTitle.text = "Item Details"
+        imageViewItem.image = item.itemImage
         if item.itemImage == UIImage(named: "no item image") {
-            //TODO: default image that says 'tap to edit'
+            buttonSaveToLibrary.alpha = 0
         } else {
-            imageViewItem.image = item.itemImage
+            buttonSaveToLibrary.alpha = 1
         }
         textFieldItemTitle.text = item.itemTitle
         if item.notes.isEmpty {
             buttonNotes.setTitle("Add Notes", for: .normal)
         } else {
             buttonNotes.setTitle(item.notes, for: .normal)
+        }
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: Any?) {
+        if error == nil {
+            let okSavingToPhotoLibraryAlert = UIAlertController(title: "Saving to Camera Roll", message: "successfully saved selected picture to camera roll", preferredStyle: .alert)
+            
+            let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel)
+            okSavingToPhotoLibraryAlert.addAction(dismissAction)
+            
+            present(okSavingToPhotoLibraryAlert, animated: true)
+        } else {
+            let errorAlert = UIAlertController(title: "Saving to Camera Roll", message: "something went wrong: \(error!.localizedDescription)", preferredStyle: .alert)
+            
+            let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel)
+            errorAlert.addAction(dismissAction)
+            
+            present(errorAlert, animated: true)
         }
     }
     
@@ -101,14 +120,40 @@ class ItemEditorViewController: UIViewController {
     }
     
     @IBAction func pressItemImage(_ sender: Any) {
-        let imagePickerVc = UIImagePickerController()
-        imagePickerVc.delegate = self
-        imagePickerVc.allowsEditing = false
-        imagePickerVc.sourceType = .photoLibrary
+        let photoSourceAlert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        present(imagePickerVc, animated: true)
+        let photoLibraryAction = UIAlertAction(title: "Camera Roll", style: .default) { (_) in
+            let imagePickerVc = UIImagePickerController()
+            imagePickerVc.delegate = self
+            imagePickerVc.allowsEditing = false
+            imagePickerVc.sourceType = .savedPhotosAlbum
+            
+            self.present(imagePickerVc, animated: true)
+        }
+        photoSourceAlert.addAction(photoLibraryAction)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
+                let imagePickerVc = UIImagePickerController()
+                imagePickerVc.delegate = self
+                imagePickerVc.allowsEditing = false
+                imagePickerVc.sourceType = .camera
+                
+                self.present(imagePickerVc, animated: true)
+            }
+            photoSourceAlert.addAction(cameraAction)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        photoSourceAlert.addAction(cancelAction)
+        
+        present(photoSourceAlert, animated: true)
     }
     
+    @IBOutlet weak var buttonSaveToLibrary: UIButton!
+    @IBAction func pressSaveToLibrary(_ sender: Any) {
+        UIImageWriteToSavedPhotosAlbum(item.itemImage, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
     @IBOutlet weak var imageViewItem: UIImageView!
     @IBOutlet weak var textFieldItemTitle: UITextField!
     @IBOutlet weak var buttonNotes: UIButton!
@@ -117,7 +162,20 @@ class ItemEditorViewController: UIViewController {
     }
     
     @IBAction func pressContactInfo(_ sender: Any) {
-        performSegue(withIdentifier: "show contact info", sender: nil)
+        if item.itemImage != UIImage(named: "no item image") {
+            performSegue(withIdentifier: "show contact info", sender: nil)
+        } else {
+            let alertMissingPhoto = UIAlertController(
+                title: "Saving New Item",
+                message: "please select a picture for this new item",
+                preferredStyle: .alert
+            )
+            
+            let dismissAction = UIAlertAction(title: "Dismiss", style: .default)
+            alertMissingPhoto.addAction(dismissAction)
+            
+            present(alertMissingPhoto, animated: true)
+        }
     }
     
     // MARK: - LIFE CYCLE

@@ -125,7 +125,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oIl-JO-Ptj">
-                                <rect key="frame" x="16" y="64" width="288" height="260"/>
+                                <rect key="frame" x="16" y="64" width="288" height="298"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" image="no item image" translatesAutoresizingMaskIntoConstraints="NO" id="1Qc-Fa-V9Q">
                                         <rect key="frame" x="84" y="0.0" width="120" height="120"/>
@@ -137,8 +137,15 @@
                                             <outletCollection property="gestureRecognizers" destination="V4P-XZ-6WK" appends="YES" id="3GE-03-sWt"/>
                                         </connections>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EdQ-rG-g3v">
+                                        <rect key="frame" x="70.5" y="128" width="147" height="30"/>
+                                        <state key="normal" title="Save to Photo Library"/>
+                                        <connections>
+                                            <action selector="pressSaveToLibrary:" destination="iD5-iK-mzj" eventType="touchUpInside" id="vOE-Sb-NVH"/>
+                                        </connections>
+                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bmU-1f-NTO">
-                                        <rect key="frame" x="0.0" y="128" width="288" height="132"/>
+                                        <rect key="frame" x="0.0" y="166" width="288" height="132"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkU-Bs-K3f">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="24"/>
@@ -216,6 +223,7 @@
                     <connections>
                         <outlet property="buttonLeft" destination="LIA-yN-O7s" id="UKW-OO-zPu"/>
                         <outlet property="buttonNotes" destination="c2c-Fj-aKS" id="uWG-8W-LeV"/>
+                        <outlet property="buttonSaveToLibrary" destination="EdQ-rG-g3v" id="CiQ-ki-d2Z"/>
                         <outlet property="imageViewItem" destination="1Qc-Fa-V9Q" id="3Ck-Ls-ZcB"/>
                         <outlet property="labelTitle" destination="0fA-oe-7DG" id="DT9-N0-rcr"/>
                         <outlet property="textFieldItemTitle" destination="hQ9-x4-EmQ" id="BQK-3k-gwj"/>
