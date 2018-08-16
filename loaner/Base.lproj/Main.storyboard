@@ -155,7 +155,7 @@
                                                     <outlet property="delegate" destination="iD5-iK-mzj" id="8qB-g2-Qrb"/>
                                                 </connections>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2c-Fj-aKS">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2c-Fj-aKS">
                                                 <rect key="frame" x="0.0" y="66.5" width="288" height="30"/>
                                                 <state key="normal" title="Add Notes"/>
                                                 <connections>
@@ -215,9 +215,11 @@
                         <outlet property="labelTitle" destination="0fA-oe-7DG" id="DT9-N0-rcr"/>
                         <outlet property="textFieldItemTitle" destination="hQ9-x4-EmQ" id="BQK-3k-gwj"/>
                         <segue destination="Rxu-r2-zh8" kind="show" identifier="show contact info" id="mz4-SS-u1r"/>
+                        <segue destination="vi5-9P-Yef" kind="unwind" identifier="unwind from cancel" unwindAction="unwindToHome:" id="Kck-gH-Q1e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VYY-sX-AG3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="vi5-9P-Yef" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="V4P-XZ-6WK">
                     <connections>
                         <action selector="pressItemImage:" destination="iD5-iK-mzj" id="hIo-sg-dBy"/>
@@ -233,13 +235,53 @@
                     <view key="view" contentMode="scaleToFill" id="XI3-gj-TmD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vse-xq-Nil">
+                                <rect key="frame" x="16" y="28" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="uae-YE-M8M" kind="unwind" identifier="unwind from notes" unwindAction="unwindToItemEditor:" id="VPJ-yb-t5x"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ecm-tC-Kk2">
+                                <rect key="frame" x="127" y="28" width="67" height="32"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cuI-Mm-wcu">
+                                <rect key="frame" x="16" y="68" width="288" height="160"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="gfM-fL-KMe" id="ASE-G9-n7m"/>
+                                </connections>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="Vse-xq-Nil" secondAttribute="leading" id="6vK-dv-BYD"/>
+                            <constraint firstItem="Ecm-tC-Kk2" firstAttribute="centerX" secondItem="Iaq-Pl-xVs" secondAttribute="centerX" id="CSZ-g2-Hvy"/>
+                            <constraint firstItem="cuI-Mm-wcu" firstAttribute="height" secondItem="XI3-gj-TmD" secondAttribute="height" multiplier="1:3" id="Ii7-CI-DaX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cuI-Mm-wcu" secondAttribute="trailing" id="Saz-bB-LuI"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="cuI-Mm-wcu" secondAttribute="leading" id="oD9-0R-0Cf"/>
+                            <constraint firstItem="Ecm-tC-Kk2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Vse-xq-Nil" secondAttribute="trailing" constant="16" id="p0X-X7-RoR"/>
+                            <constraint firstItem="cuI-Mm-wcu" firstAttribute="top" secondItem="Ecm-tC-Kk2" secondAttribute="bottom" constant="8" id="sDI-nc-dSz"/>
+                            <constraint firstItem="Vse-xq-Nil" firstAttribute="top" secondItem="Iaq-Pl-xVs" secondAttribute="top" constant="8" id="seh-b0-W4k"/>
+                            <constraint firstItem="Ecm-tC-Kk2" firstAttribute="top" secondItem="Iaq-Pl-xVs" secondAttribute="top" constant="8" id="wkJ-mP-BWP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Iaq-Pl-xVs"/>
                     </view>
+                    <connections>
+                        <outlet property="textViewNotes" destination="cuI-Mm-wcu" id="exs-0D-9tG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2E8-5u-NYw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="uae-YE-M8M" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2648" y="966"/>
+            <point key="canvasLocation" x="2647.5" y="965"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="iF8-kH-bPQ">
@@ -248,11 +290,34 @@
                     <view key="view" contentMode="scaleToFill" id="5Hj-RR-47M">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MiK-R8-N0z">
+                                <rect key="frame" x="16" y="28" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="6yC-1J-p8a" kind="unwind" identifier="unwind from contact info" unwindAction="unwindToItemEditor:" id="SHS-w4-FFe"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUz-iy-hjg">
+                                <rect key="frame" x="91" y="28" width="138" height="32"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hUz-iy-hjg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MiK-R8-N0z" secondAttribute="trailing" constant="16" id="7SG-21-8dm"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="MiK-R8-N0z" secondAttribute="leading" id="iOc-el-tEk"/>
+                            <constraint firstItem="hUz-iy-hjg" firstAttribute="top" secondItem="mWO-HL-bq3" secondAttribute="top" constant="8" id="mzL-lz-jHG"/>
+                            <constraint firstItem="hUz-iy-hjg" firstAttribute="centerX" secondItem="mWO-HL-bq3" secondAttribute="centerX" id="nWM-NR-O48"/>
+                            <constraint firstItem="MiK-R8-N0z" firstAttribute="top" secondItem="mWO-HL-bq3" secondAttribute="top" constant="8" id="sTq-lS-fhA"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mWO-HL-bq3"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="foz-Zr-9qM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="6yC-1J-p8a" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2648" y="259"/>
         </scene>

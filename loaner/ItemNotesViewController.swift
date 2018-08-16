@@ -18,8 +18,27 @@ class ItemNotesViewController: UIViewController {
     
     // MARK: - METHODS
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "unwind from notes":
+                body = textViewNotes.text
+            default: break
+            }
+        }
+    }
+    
     // MARK: - IBACTIONS
     
+    @IBOutlet weak var textViewNotes: UITextView!
+    
     // MARK: - LIFE CYCLE
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        textViewNotes.text = body
+        textViewNotes.becomeFirstResponder()
+    }
 
 }

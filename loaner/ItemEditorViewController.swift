@@ -55,6 +55,27 @@ class ItemEditorViewController: UIViewController {
     
     // MARK: - IBACTIONS
     
+    @IBAction func unwindToItemEditor(_ segue: UIStoryboardSegue) {
+        guard let identifier = segue.identifier else {
+            return
+        }
+        
+        switch identifier {
+        case "unwind from notes":
+            guard let itemNotesVc = segue.source as? ItemNotesViewController else {
+                return print("storyboard not set up correctly")
+            }
+            
+            item.notes = itemNotesVc.body
+            
+            updateUI()
+        case "unwind from contact info":
+            break
+        default:
+            break
+        }
+    }
+    
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var buttonLeft: UIButton!
     @IBAction func pressLeftButton(_ sender: Any) {
@@ -76,7 +97,12 @@ class ItemEditorViewController: UIViewController {
     }
     
     @IBAction func pressItemImage(_ sender: Any) {
+        let imagePickerVc = UIImagePickerController()
+        imagePickerVc.delegate = self
+        imagePickerVc.allowsEditing = false
+        imagePickerVc.sourceType = .photoLibrary
         
+        present(imagePickerVc, animated: true)
     }
     
     @IBOutlet weak var imageViewItem: UIImageView!
@@ -98,6 +124,26 @@ class ItemEditorViewController: UIViewController {
         updateUI()
     }
 
+}
+
+extension ItemEditorViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            return print("failed to get image")
+        }
+        
+        let fixedImage = pickedImage.applyFixedOrientation
+        item.itemImage = fixedImage
+        
+        updateUI()
+        
+        dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
 }
 
 extension ItemEditorViewController: UITextFieldDelegate {
