@@ -443,7 +443,7 @@
                         <outlet property="labelTitle" destination="hUz-iy-hjg" id="q7A-xb-AO1"/>
                         <outlet property="stackViewContactInfo" destination="2Jv-K8-MX7" id="hza-t4-cKS"/>
                         <outlet property="viewAddContact" destination="kyX-NK-s7t" id="Qn1-GT-dVE"/>
-                        <segue destination="6yC-1J-p8a" kind="unwind" identifier="unwind from saving new contact" unwindAction="unwindToHome:" id="HsU-UM-bQR"/>
+                        <segue destination="6yC-1J-p8a" kind="unwind" identifier="unwind from saving new item" unwindAction="unwindToHome:" id="HsU-UM-bQR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="foz-Zr-9qM" userLabel="First Responder" sceneMemberID="firstResponder"/>

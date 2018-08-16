@@ -72,7 +72,20 @@ class ItemContactEditorViewController: UIViewController {
     
     @IBOutlet weak var buttonSave: UIButton!
     @IBAction func pressSave(_ sender: UIButton) {
-        
+        if item.loanee != nil {
+            performSegue(withIdentifier: "unwind from saving new item", sender: nil)
+        } else {
+            let alertMissingContact = UIAlertController(
+                title: "Saving New Item",
+                message: "please select a contact that has a phone number",
+                preferredStyle: .alert
+            )
+            
+            let dismissAction = UIAlertAction(title: "Dismiss", style: .default)
+            alertMissingContact.addAction(dismissAction)
+            
+            present(alertMissingContact, animated: true)
+        }
     }
     
     // MARK: - LIFE CYCLE

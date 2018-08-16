@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         return Item(itemTitle: "Untitled Item")
     }
     
-    func add(item: Item) {
+    func add(saved item: Item) {
         items.insert(item, at: 0)
         collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
     }
@@ -91,6 +91,13 @@ class ViewController: UIViewController {
             }
             
             markItemAsReturned(at: selectedItemIndexPath.row)
+            
+        case "unwind from saving new item":
+            guard let itemContactVc = segue.source as? ItemContactEditorViewController else {
+                return print("storyboard not set up correctly")
+            }
+            
+            add(saved: itemContactVc.item)
         default:
             break
         }
