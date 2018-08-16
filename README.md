@@ -68,6 +68,11 @@ ItemDetailedVc
 - present contact info
 - hide and show the navigation bar
 
+LOCAL NOTIFICATIONS
+NotificationService
+PrivacyUtility
+SettingsUrls
+
 CHALLENGES
 
 VIEWCONTROLLERS
