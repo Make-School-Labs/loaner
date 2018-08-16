@@ -14,6 +14,7 @@
 		E929E9732124EB810018488C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E929E9712124EB810018488C /* LaunchScreen.storyboard */; };
 		E929E97B2124EC880018488C /* Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929E97A2124EC880018488C /* Loan.swift */; };
 		E929E97D2124F1B70018488C /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929E97C2124F1B70018488C /* ItemCollectionViewCell.swift */; };
+		E9E5BDF92125353500F3442B /* ItemDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5BDF82125353500F3442B /* ItemDetailedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E929E9742124EB810018488C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E929E97A2124EC880018488C /* Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loan.swift; sourceTree = "<group>"; };
 		E929E97C2124F1B70018488C /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		E9E5BDF82125353500F3442B /* ItemDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				E929E9682124EB7E0018488C /* AppDelegate.swift */,
 				E929E97A2124EC880018488C /* Loan.swift */,
 				E929E96A2124EB7E0018488C /* ViewController.swift */,
+				E9E5BDF82125353500F3442B /* ItemDetailedViewController.swift */,
 				E929E97C2124F1B70018488C /* ItemCollectionViewCell.swift */,
 				E929E96C2124EB7E0018488C /* Main.storyboard */,
 				E929E96F2124EB810018488C /* Assets.xcassets */,
@@ -143,6 +146,7 @@
 			files = (
 				E929E96B2124EB7E0018488C /* ViewController.swift in Sources */,
 				E929E97D2124F1B70018488C /* ItemCollectionViewCell.swift in Sources */,
+				E9E5BDF92125353500F3442B /* ItemDetailedViewController.swift in Sources */,
 				E929E97B2124EC880018488C /* Loan.swift in Sources */,
 				E929E9692124EB7E0018488C /* AppDelegate.swift in Sources */,
 			);
