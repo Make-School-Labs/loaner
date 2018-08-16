@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit.UIImage
+import Contacts
 
 struct Item {
     var itemTitle: String
@@ -25,10 +26,53 @@ struct Item {
         self.itemImage = itemImage
         self.loanee = loanee
     }
+    
+    mutating func assignLoanee(to contact: CNContact?) {
+        if let contact = contact {
+            
+            //contact image
+            var profileImage = UIImage(named: "no profile image")!
+            if let dataFromContact = contact.imageData,
+                let imageFromContact = UIImage(data: dataFromContact) {
+                profileImage = imageFromContact
+            }
+            
+            guard let firstPhoneNumber = contact.phoneNumbers.first else {
+                return print("this contact needed to have at least one number from the ContactPickerVc")
+            }
+            
+            //udpate loanee var
+            let newLoanee = Loanee(
+                name: contact.givenName,
+                profileImage: profileImage,
+                contactNumber: firstPhoneNumber.value.stringValue,
+                contact: contact
+            )
+            
+            loanee = newLoanee
+        } else {
+            loanee = nil
+        }
+    }
 }
 
 struct Loanee {
     var name: String
     var profileImage: UIImage = UIImage(named: "no profile image")!
     var contactNumber: String?
+    var contactInfo: CNContact! = nil
+    
+    init(name: String, profileImage: UIImage, contactNumber: String?) {
+        self.name = name
+        self.profileImage = profileImage
+        self.contactNumber = contactNumber
+    }
+    
+    init(name: String, profileImage: UIImage, contactNumber: String?, contact: CNContact) {
+        self.name = name
+        self.profileImage = profileImage
+        self.contactNumber = contactNumber
+        self.contactInfo = contact
+    }
 }
+

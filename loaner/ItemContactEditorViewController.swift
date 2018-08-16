@@ -66,7 +66,8 @@ class ItemContactEditorViewController: UIViewController {
     @IBOutlet weak var labelContactName: UILabel!
     @IBOutlet weak var labelContactNumber: UILabel!
     @IBAction func pressDeleteContact(_ sender: UIButton) {
-        
+        item.assignLoanee(to: nil)
+        updateContactInfo()
     }
     
     @IBOutlet weak var buttonSave: UIButton!
@@ -86,6 +87,7 @@ class ItemContactEditorViewController: UIViewController {
 
 extension ItemContactEditorViewController: CNContactPickerDelegate {
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
-        
+        item.assignLoanee(to: contact)
+        updateContactInfo()
     }
 }
