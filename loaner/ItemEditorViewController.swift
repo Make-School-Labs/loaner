@@ -23,6 +23,20 @@ class ItemEditorViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "show item notes":
+                guard let itemNotesVc = segue.destination as? ItemNotesViewController else {
+                    return print("storyboard not set up correctly")
+                }
+                
+                itemNotesVc.body = item.notes
+            default: break
+            }
+        }
+    }
+    
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var buttonLeft: UIButton!
     @IBAction func pressLeftButton(_ sender: Any) {
@@ -57,6 +71,23 @@ class ItemEditorViewController: UIViewController {
     
     @IBAction func pressContactInfo(_ sender: Any) {
         //TODO: segue to the next step only if the user has select an image and added an item title
+    }
+    
+    @IBAction func unwindToItemEditor(_ segue: UIStoryboardSegue) {
+        guard let identifier = segue.identifier else { return }
+        
+        switch identifier {
+        case "unwind from notes":
+            guard let itemNotesVc = segue.source as? ItemNotesViewController else {
+                return print("storyboard not set up correctly")
+            }
+            
+            item.notes = itemNotesVc.body
+            
+            updateUI()
+        default:
+            break
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

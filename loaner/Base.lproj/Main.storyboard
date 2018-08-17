@@ -113,11 +113,12 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdb-uf-gJJ">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdb-uf-gJJ">
                                                 <rect key="frame" x="0.0" y="102" width="343" height="30"/>
                                                 <state key="normal" title="Add Notes"/>
                                                 <connections>
                                                     <action selector="pressNotes:" destination="TDj-Da-Ezb" eventType="touchUpInside" id="iXE-f2-AhJ"/>
+                                                    <segue destination="46e-v2-gtF" kind="show" identifier="show item notes" id="efu-N9-tn3"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -173,6 +174,59 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1937" y="231"/>
+        </scene>
+        <!--Item Notes View Controller-->
+        <scene sceneID="41K-bs-liP">
+            <objects>
+                <viewController id="46e-v2-gtF" customClass="ItemNotesViewController" customModule="loaner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gGB-o9-flC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3OA-OD-P13">
+                                <rect key="frame" x="16" y="28" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="pressLeftButton:" destination="TDj-Da-Ezb" eventType="touchUpInside" id="YBQ-21-N2u"/>
+                                    <segue destination="p31-Ui-nVY" kind="unwind" identifier="unwind from notes" unwindAction="unwindToItemEditor:" id="Siv-TZ-dRY"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" text="Notes" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMV-7j-3cc">
+                                <rect key="frame" x="154.5" y="28" width="67" height="32"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KL2-SI-3aJ">
+                                <rect key="frame" x="16" y="68" width="343" height="167"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KL2-SI-3aJ" firstAttribute="top" secondItem="mMV-7j-3cc" secondAttribute="bottom" constant="8" id="8N3-zQ-CbV"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="KL2-SI-3aJ" secondAttribute="leading" id="9JG-qT-O0o"/>
+                            <constraint firstItem="mMV-7j-3cc" firstAttribute="top" secondItem="qvq-hC-JVr" secondAttribute="top" constant="8" id="K6J-bv-mAJ"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="3OA-OD-P13" secondAttribute="leading" id="Ldg-fL-Ddd"/>
+                            <constraint firstItem="KL2-SI-3aJ" firstAttribute="height" secondItem="gGB-o9-flC" secondAttribute="height" multiplier="1:4" id="Lof-Nw-VPm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KL2-SI-3aJ" secondAttribute="trailing" id="Tcc-BK-4D5"/>
+                            <constraint firstItem="mMV-7j-3cc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3OA-OD-P13" secondAttribute="trailing" constant="8" id="f51-qa-Br1"/>
+                            <constraint firstItem="3OA-OD-P13" firstAttribute="top" secondItem="qvq-hC-JVr" secondAttribute="top" constant="8" id="fir-5N-rE9"/>
+                            <constraint firstItem="mMV-7j-3cc" firstAttribute="centerX" secondItem="qvq-hC-JVr" secondAttribute="centerX" id="odH-Ll-Oh1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qvq-hC-JVr"/>
+                    </view>
+                    <connections>
+                        <outlet property="textViewNotes" destination="KL2-SI-3aJ" id="9uA-Jh-YHj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A97-1C-naE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="p31-Ui-nVY" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2712.8000000000002" y="780.35982008995506"/>
         </scene>
         <!--Item Detailed View Controller-->
         <scene sceneID="e3Y-zo-k06">
