@@ -30,7 +30,22 @@ class ItemEditorViewController: UIViewController {
     }
     
     @IBAction func pressItemImage(_ sender: Any) {
-        //TODO: present the photo library picker to pick an image for the item
+        let photoSourceAlert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { (_) in
+            let imagePickerVc = UIImagePickerController()
+            imagePickerVc.delegate = self
+            imagePickerVc.allowsEditing = true
+            imagePickerVc.sourceType = .savedPhotosAlbum
+            
+            self.present(imagePickerVc, animated: true)
+        }
+        photoSourceAlert.addAction(photoLibraryAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        photoSourceAlert.addAction(cancelAction)
+        
+        present(photoSourceAlert, animated: true)
     }
     
     @IBOutlet weak var imageViewItem: UIImageView!
@@ -50,4 +65,24 @@ class ItemEditorViewController: UIViewController {
         updateUI()
     }
 
+}
+
+extension ItemEditorViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage else {
+            return print("failed to get image")
+        }
+        
+        let fixedImage = pickedImage.applyFixedOrientation
+        item.itemImage = fixedImage
+        
+        updateUI()
+        
+        dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
 }
