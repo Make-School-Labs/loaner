@@ -10,16 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBAction func unwindToHome(_ segue: UIStoryboardSegue) {
+        guard let identifier = segue.identifier else { return }
+        
+        switch identifier {
+        case "unwind from back":
+            print("unwind from back")
+        case "unwind from mark as returned":
+            print("unwind from mark as returned")
+        case "unwind from trash":
+            print("unwind from trash")
+        default:
+            break
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
