@@ -66,6 +66,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfz-sZ-Eiy">
                                 <rect key="frame" x="16" y="28" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="pressLeftButton:" destination="TDj-Da-Ezb" eventType="touchUpInside" id="h8s-w6-kwA"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" text="New Item" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VO5-a6-gb2">
                                 <rect key="frame" x="134.5" y="28" width="106" height="31.5"/>
@@ -78,9 +81,13 @@
                                 <subviews>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="1rp-Bg-GhM">
                                         <rect key="frame" x="88" y="0.0" width="167" height="167"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="1rp-Bg-GhM" secondAttribute="height" id="HBP-Lz-Yek"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="c56-JE-PoW" appends="YES" id="ugT-AY-dfv"/>
+                                        </connections>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Uvu-U9-M30">
                                         <rect key="frame" x="0.0" y="183" width="343" height="132"/>
@@ -106,6 +113,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdb-uf-gJJ">
                                                 <rect key="frame" x="0.0" y="102" width="343" height="30"/>
                                                 <state key="normal" title="Add Notes"/>
+                                                <connections>
+                                                    <action selector="pressNotes:" destination="TDj-Da-Ezb" eventType="touchUpInside" id="iXE-f2-AhJ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -121,6 +131,9 @@
                                     <constraint firstAttribute="height" constant="48" id="UG1-HC-fmP"/>
                                 </constraints>
                                 <state key="normal" title="Contact Info"/>
+                                <connections>
+                                    <action selector="pressContactInfo:" destination="TDj-Da-Ezb" eventType="touchUpInside" id="ytS-nQ-MkA"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -141,8 +154,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mXe-WN-IJX"/>
                     </view>
+                    <connections>
+                        <outlet property="buttonLeft" destination="Yfz-sZ-Eiy" id="R7F-bl-Lqc"/>
+                        <outlet property="buttonNotes" destination="pdb-uf-gJJ" id="c7o-i1-o6a"/>
+                        <outlet property="imageViewItem" destination="1rp-Bg-GhM" id="2vi-3Q-Gi6"/>
+                        <outlet property="labelTitle" destination="VO5-a6-gb2" id="3B1-b6-NkN"/>
+                        <outlet property="textFieldItemTitle" destination="kfK-Mx-BHa" id="OGi-9A-ooe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HRG-fK-f9U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="c56-JE-PoW">
+                    <connections>
+                        <action selector="pressItemImage:" destination="TDj-Da-Ezb" id="LHq-pr-RpP"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1937" y="231"/>
         </scene>
