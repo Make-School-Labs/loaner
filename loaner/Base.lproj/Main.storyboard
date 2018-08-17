@@ -69,7 +69,7 @@
                                 </subviews>
                             </stackView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="54a-aK-PnV">
-                                <rect key="frame" x="0.0" y="67.5" width="375" height="632.5"/>
+                                <rect key="frame" x="0.0" y="67" width="375" height="632.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="rdg-sb-bTJ">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="632.5"/>
@@ -161,6 +161,14 @@
                                 </constraints>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="80"/>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ej4-if-FAr">
+                                <rect key="frame" x="16" y="632" width="343" height="48"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="9KV-Ot-2AP"/>
+                                </constraints>
+                                <state key="normal" title="Mark as Returned"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -169,9 +177,12 @@
                             <constraint firstAttribute="leadingMargin" secondItem="y4N-EY-wkt" secondAttribute="leading" id="IfK-R8-Icd"/>
                             <constraint firstItem="54a-aK-PnV" firstAttribute="top" secondItem="y4N-EY-wkt" secondAttribute="bottom" constant="8" id="Nwi-LD-YyD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="y4N-EY-wkt" secondAttribute="trailing" id="NzD-8L-Pqb"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Ej4-if-FAr" secondAttribute="leading" id="ROh-Yx-j4E"/>
                             <constraint firstItem="zgp-26-MR0" firstAttribute="width" secondItem="hIs-Za-y8b" secondAttribute="width" multiplier="1:3" id="RSh-vs-LxA"/>
+                            <constraint firstItem="w6b-09-Z8y" firstAttribute="bottom" secondItem="Ej4-if-FAr" secondAttribute="bottom" constant="20" id="ljZ-QZ-qqO"/>
                             <constraint firstItem="y4N-EY-wkt" firstAttribute="top" secondItem="w6b-09-Z8y" secondAttribute="top" constant="8" id="r9S-YX-wrq"/>
                             <constraint firstItem="nZl-6Z-lDd" firstAttribute="centerX" secondItem="w6b-09-Z8y" secondAttribute="centerX" id="uT0-Pz-LXK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ej4-if-FAr" secondAttribute="trailing" id="wj2-El-a5K"/>
                             <constraint firstItem="54a-aK-PnV" firstAttribute="leading" secondItem="w6b-09-Z8y" secondAttribute="leading" id="wkI-zs-eQu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="w6b-09-Z8y"/>
@@ -180,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WKu-CF-hBA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1936.8" y="-570.76461769115451"/>
+            <point key="canvasLocation" x="1936.8" y="-571.21439280359823"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="33f-6J-DJM">
