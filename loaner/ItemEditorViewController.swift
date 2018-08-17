@@ -86,3 +86,20 @@ extension ItemEditorViewController: UIImagePickerControllerDelegate, UINavigatio
         dismiss(animated: true)
     }
 }
+
+extension ItemEditorViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return false
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard textField === textFieldItemTitle else {
+            return
+        }
+        
+        item.itemTitle = textField.text ?? ""
+    }
+}
