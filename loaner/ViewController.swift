@@ -39,6 +39,13 @@ class ViewController: UIViewController {
             print("unwind from mark as returned")
         case "unwind from trash":
             print("unwind from trash")
+        case "unwind from saving new item":
+            guard let itemContactInfoVc = segue.source as? ItemContactInfoViewController else {
+                return print("storyboard not set up correctly")
+            }
+            
+            let newItem: Item = itemContactInfoVc.item
+            print("unwind from saving new item: \(newItem)")
         default:
             break
         }

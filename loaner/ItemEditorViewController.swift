@@ -46,7 +46,21 @@ class ItemEditorViewController: UIViewController {
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var buttonLeft: UIButton!
     @IBAction func pressLeftButton(_ sender: Any) {
-        //TODO: confirm with user if they're sure they want to cancel adding a new item
+        let alertDiscardChanges = UIAlertController(
+            title: nil,
+            message: "Are you sure you want to cancel these changes?",
+            preferredStyle: .actionSheet
+        )
+        
+        let actionDiscardChanges = UIAlertAction(title: "Discard Changes", style: .destructive) { (_) in
+            self.performSegue(withIdentifier: "unwind from cancel", sender: nil)
+        }
+        alertDiscardChanges.addAction(actionDiscardChanges)
+        
+        let actionCancel = UIAlertAction(title: "Continue Editing", style: .cancel)
+        alertDiscardChanges.addAction(actionCancel)
+        
+        present(alertDiscardChanges, animated: true)
     }
     
     @IBAction func pressItemImage(_ sender: Any) {

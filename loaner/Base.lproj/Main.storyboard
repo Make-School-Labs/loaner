@@ -165,9 +165,11 @@
                         <outlet property="labelTitle" destination="VO5-a6-gb2" id="3B1-b6-NkN"/>
                         <outlet property="textFieldItemTitle" destination="kfK-Mx-BHa" id="OGi-9A-ooe"/>
                         <segue destination="Xfz-tY-RF8" kind="show" identifier="show contact info" id="bY5-14-Me4"/>
+                        <segue destination="5qh-lt-HSN" kind="unwind" identifier="unwind from cancel" unwindAction="unwindToHome:" id="lvL-7T-TCl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HRG-fK-f9U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5qh-lt-HSN" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="c56-JE-PoW">
                     <connections>
                         <action selector="pressItemImage:" destination="TDj-Da-Ezb" id="LHq-pr-RpP"/>
@@ -327,6 +329,7 @@
                         <outlet property="labelItemTitle" destination="gaQ-Lo-6GL" id="sAU-fg-alt"/>
                         <outlet property="labelTitle" destination="R9c-w0-scL" id="qGj-IO-YWN"/>
                         <outlet property="stackViewContactInfo" destination="7uh-pF-Req" id="sfa-TN-mhA"/>
+                        <segue destination="7NO-6D-9Wb" kind="unwind" identifier="unwind from saving new item" unwindAction="unwindToHome:" id="QDz-ov-buc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X28-fY-Gb2" userLabel="First Responder" sceneMemberID="firstResponder"/>
