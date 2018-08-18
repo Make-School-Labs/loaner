@@ -64,8 +64,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfz-sZ-Eiy">
-                                <rect key="frame" x="16" y="28" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
+                                <rect key="frame" x="16" y="28" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="pressLeftButton:" destination="TDj-Da-Ezb" eventType="touchUpInside" id="h8s-w6-kwA"/>
                                 </connections>
