@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ContactsUI
 
 class ItemContactInfoViewController: UIViewController {
 
@@ -45,7 +46,11 @@ class ItemContactInfoViewController: UIViewController {
     @IBOutlet weak var labelItemNotes: UILabel!
     @IBOutlet weak var buttonAddContact: UIButton!
     @IBAction func pressAddContact(_ sender: UIButton) {
-        //TODO: present contact picker
+        let contactVc = CNContactPickerViewController()
+        contactVc.delegate = self
+        contactVc.predicateForEnablingContact = NSPredicate(format: "phoneNumbers.@count > 0")
+        
+        present(contactVc, animated: true)
     }
     
     @IBOutlet weak var stackViewContactInfo: UIStackView!
@@ -53,17 +58,42 @@ class ItemContactInfoViewController: UIViewController {
     @IBOutlet weak var labelContactName: UILabel!
     @IBOutlet weak var labelContactNumber: UILabel!
     @IBAction func pressDeleteContact(_ sender: UIButton) {
-        //TODO: clear loaner property and update ui
+        item.assignLoanee(to: nil)
+        updateContactInfo()
     }
     
     @IBOutlet weak var buttonSave: UIButton!
     @IBAction func pressSave(_ sender: UIButton) {
-        //TODO: validate input and unwind from save
+        
+        //validate the user has selected a contact
+        guard item.loanee != nil else {
+            let alertMissingContact = UIAlertController(
+                title: "Saving New Item",
+                message: "please select a contact that has a phone number",
+                preferredStyle: .alert
+            )
+            
+            let dismissAction = UIAlertAction(title: "Dismiss", style: .default)
+            alertMissingContact.addAction(dismissAction)
+            
+            present(alertMissingContact, animated: true)
+            
+            return
+        }
+        
+        performSegue(withIdentifier: "unwind from saving new item", sender: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         updateUI()
+    }
+}
+
+extension ItemContactInfoViewController: CNContactPickerDelegate {
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        item.assignLoanee(to: contact)
+        updateContactInfo()
     }
 }
