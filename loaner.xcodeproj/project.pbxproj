@@ -13,6 +13,7 @@
 		E929E9702124EB810018488C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E929E96F2124EB810018488C /* Assets.xcassets */; };
 		E929E9732124EB810018488C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E929E9712124EB810018488C /* LaunchScreen.storyboard */; };
 		E969554E21277C3100457E12 /* ItemEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E969554D21277C3100457E12 /* ItemEditorViewController.swift */; };
+		E96F11EA2128BCCA004D549A /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96F11E92128BCCA004D549A /* ItemCollectionViewCell.swift */; };
 		E9BA28F321274FED004FA7D3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA28F221274FED004FA7D3 /* Item.swift */; };
 		E9BA28F521275B1A004FA7D3 /* ItemDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA28F421275B1A004FA7D3 /* ItemDetailedViewController.swift */; };
 		E9D24DEF212789B90045C5D8 /* UIImage+ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D24DEE212789B90045C5D8 /* UIImage+ImagePickerController.swift */; };
@@ -29,6 +30,7 @@
 		E929E9722124EB810018488C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E929E9742124EB810018488C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E969554D21277C3100457E12 /* ItemEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEditorViewController.swift; sourceTree = "<group>"; };
+		E96F11E92128BCCA004D549A /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9BA28F221274FED004FA7D3 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		E9BA28F421275B1A004FA7D3 /* ItemDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailedViewController.swift; sourceTree = "<group>"; };
 		E9D24DEE212789B90045C5D8 /* UIImage+ImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+ImagePickerController.swift"; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			children = (
 				E929E9682124EB7E0018488C /* AppDelegate.swift */,
 				E929E96A2124EB7E0018488C /* ViewController.swift */,
+				E96F11E92128BCCA004D549A /* ItemCollectionViewCell.swift */,
 				E9BA28F421275B1A004FA7D3 /* ItemDetailedViewController.swift */,
 				E969554D21277C3100457E12 /* ItemEditorViewController.swift */,
 				E9D24DF2212794E30045C5D8 /* ItemContactInfoViewController.swift */,
@@ -156,6 +159,7 @@
 				E9D24DF121278BCD0045C5D8 /* ItemNotesViewController.swift in Sources */,
 				E929E96B2124EB7E0018488C /* ViewController.swift in Sources */,
 				E9BA28F321274FED004FA7D3 /* Item.swift in Sources */,
+				E96F11EA2128BCCA004D549A /* ItemCollectionViewCell.swift in Sources */,
 				E9BA28F521275B1A004FA7D3 /* ItemDetailedViewController.swift in Sources */,
 				E9D24DF3212794E30045C5D8 /* ItemContactInfoViewController.swift in Sources */,
 				E9D24DEF212789B90045C5D8 /* UIImage+ImagePickerController.swift in Sources */,
