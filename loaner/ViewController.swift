@@ -95,6 +95,19 @@ class ViewController: UIViewController {
             break
         }
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //set up collection view layout to be half of the screen width and with some padding
+        let flow = UICollectionViewFlowLayout()
+        let screenSize = view.bounds.size
+        let horizontalPadding: CGFloat = 8
+        let verticalPadding: CGFloat = 12
+        flow.itemSize = CGSize(width: screenSize.width / 2 - horizontalPadding * 2, height: screenSize.width / 2 - verticalPadding * 2)
+        flow.sectionInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
+        collectionView.collectionViewLayout = flow
+    }
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
