@@ -164,6 +164,7 @@
                         <outlet property="imageViewItem" destination="1rp-Bg-GhM" id="2vi-3Q-Gi6"/>
                         <outlet property="labelTitle" destination="VO5-a6-gb2" id="3B1-b6-NkN"/>
                         <outlet property="textFieldItemTitle" destination="kfK-Mx-BHa" id="OGi-9A-ooe"/>
+                        <segue destination="Xfz-tY-RF8" kind="show" identifier="show contact info" id="bY5-14-Me4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HRG-fK-f9U" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -174,6 +175,45 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1937" y="231"/>
+        </scene>
+        <!--Item Contact Info View Controller-->
+        <scene sceneID="vEG-9X-kOU">
+            <objects>
+                <viewController id="Xfz-tY-RF8" customClass="ItemContactInfoViewController" customModule="loaner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ty8-65-Urj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfF-jR-8My">
+                                <rect key="frame" x="16" y="28" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="pressLeftButton:" destination="TDj-Da-Ezb" eventType="touchUpInside" id="pEe-5g-MBx"/>
+                                    <segue destination="7NO-6D-9Wb" kind="unwind" identifier="unwind from contact info" unwindAction="unwindToItemEditor:" id="c5d-RV-BoB"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" text="Contact Info" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9c-w0-scL">
+                                <rect key="frame" x="119" y="28" width="138" height="32"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="R9c-w0-scL" firstAttribute="centerX" secondItem="F3I-uF-9RK" secondAttribute="centerX" id="1dB-tG-Uw3"/>
+                            <constraint firstItem="R9c-w0-scL" firstAttribute="top" secondItem="F3I-uF-9RK" secondAttribute="top" constant="8" id="8Rr-RF-sCG"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="cfF-jR-8My" secondAttribute="leading" id="fcP-N5-8nz"/>
+                            <constraint firstItem="R9c-w0-scL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cfF-jR-8My" secondAttribute="trailing" constant="8" id="ki2-nh-pmg"/>
+                            <constraint firstItem="cfF-jR-8My" firstAttribute="top" secondItem="F3I-uF-9RK" secondAttribute="top" constant="8" id="zWB-kR-tT4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="F3I-uF-9RK"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X28-fY-Gb2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="7NO-6D-9Wb" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2713" y="83"/>
         </scene>
         <!--Item Notes View Controller-->
         <scene sceneID="41K-bs-liP">

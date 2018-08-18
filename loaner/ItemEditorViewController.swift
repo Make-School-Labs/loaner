@@ -32,6 +32,12 @@ class ItemEditorViewController: UIViewController {
                 }
                 
                 itemNotesVc.body = item.notes
+            case "show contact info":
+                guard let itemContactVc = segue.destination as? ItemContactInfoViewController else {
+                    return print("storyboard not set up correctly")
+                }
+                
+                itemContactVc.item = item
             default: break
             }
         }
@@ -70,7 +76,38 @@ class ItemEditorViewController: UIViewController {
     }
     
     @IBAction func pressContactInfo(_ sender: Any) {
-        //TODO: segue to the next step only if the user has select an image and added an item title
+        
+        //validate the user has selected an image
+        guard item.itemImage != UIImage(named: "no item image") else {
+            let missingImageAlert = UIAlertController(
+                title: "Adding an Item",
+                message: "please select an image for the new item",
+                preferredStyle: .alert
+            )
+            
+            let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel)
+            missingImageAlert.addAction(cancelAction)
+            
+            present(missingImageAlert, animated: true)
+            return
+        }
+        
+        //validate the user has enter a title
+        guard item.itemTitle.isEmpty == false else {
+            let missingImageAlert = UIAlertController(
+                title: "Adding an Item",
+                message: "please select enter a title for the new item",
+                preferredStyle: .alert
+            )
+            
+            let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel)
+            missingImageAlert.addAction(cancelAction)
+            
+            present(missingImageAlert, animated: true)
+            return
+        }
+        
+        performSegue(withIdentifier: "show contact info", sender: nil)
     }
     
     @IBAction func unwindToItemEditor(_ segue: UIStoryboardSegue) {
@@ -85,6 +122,12 @@ class ItemEditorViewController: UIViewController {
             item.notes = itemNotesVc.body
             
             updateUI()
+        case "unwind from contact info":
+            guard let itemContactVc = segue.source as? ItemContactInfoViewController else {
+                return print("storyboard not set up correctly")
+            }
+            
+            item = itemContactVc.item
         default:
             break
         }
