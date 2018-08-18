@@ -195,13 +195,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" text="Contact Info" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9c-w0-scL">
-                                <rect key="frame" x="119.5" y="28" width="137.5" height="31.5"/>
+                                <rect key="frame" x="119" y="28" width="137.5" height="31.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="i1q-s9-Nch">
-                                <rect key="frame" x="24" y="67.5" width="327" height="322.5"/>
+                                <rect key="frame" x="24" y="67.5" width="327" height="322"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4ce-y7-c8q">
                                         <rect key="frame" x="0.0" y="0.0" width="327" height="83.5"/>
@@ -246,17 +246,17 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7uh-pF-Req">
-                                        <rect key="frame" x="0.0" y="239" width="327" height="83.5"/>
+                                        <rect key="frame" x="0.0" y="239" width="327" height="83"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="VSs-kO-ETD">
-                                                <rect key="frame" x="0.0" y="0.0" width="83.5" height="83.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="83.5" height="83"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="VSs-kO-ETD" secondAttribute="height" id="1vC-OK-NPi"/>
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="57g-pS-aPa">
-                                                <rect key="frame" x="91.5" y="24.5" width="197.5" height="35"/>
+                                                <rect key="frame" x="91.5" y="24" width="197.5" height="35"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKQ-sD-e4U">
                                                         <rect key="frame" x="0.0" y="0.0" width="197.5" height="20.5"/>
@@ -273,7 +273,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNF-xf-vFN">
-                                                <rect key="frame" x="297" y="27" width="30" height="30"/>
+                                                <rect key="frame" x="297" y="26.5" width="30" height="30"/>
                                                 <state key="normal" title="x"/>
                                                 <connections>
                                                     <action selector="pressDeleteContact:" destination="Xfz-tY-RF8" eventType="touchUpInside" id="jeh-o2-t0Q"/>
@@ -354,7 +354,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" text="Notes" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMV-7j-3cc">
-                                <rect key="frame" x="154.5" y="28" width="67" height="32"/>
+                                <rect key="frame" x="154" y="28" width="67" height="32"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
