@@ -74,15 +74,6 @@ class ItemDetailedViewController: UIViewController {
         present(alertMarkAsReturned, animated: true)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let krabs = Loanee(name: "Mr. Krabs", profileImage: #imageLiteral(resourceName: "mr krabs"), contactNumber: "7071357911")
-        let bottleLoan = Item(itemTitle: "Water Bottle", notes: "This plane is very important and I hope Mr. Krabs gives it back in one piece", itemImage: #imageLiteral(resourceName: "plane"), loanee: krabs)
-
-        item = bottleLoan
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
